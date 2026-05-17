@@ -5,40 +5,84 @@ import java.awt.*;
 
 public class Calculator extends JFrame {
 
-    private JTextField input1 = new JTextField(10);
-    private JTextField input2 = new JTextField(10);
-    private JLabel resultLabel = new JLabel("Хариу: ");
+	private JTextField input1 = new JTextField(10);
+	private JTextField input2 = new JTextField(10);
 
-    public Calculator() {
-        setTitle("Тооны машин");
-        setSize(350, 180);
-        setLayout(new FlowLayout());
+	private JLabel resultLabel = new JLabel("Хариу: "); 
 
-        JButton btnAdd = new JButton("+");
-        JButton btnSub = new JButton("-");
-        JButton btnMul = new JButton("*");
-        JButton btnDiv = new JButton("÷");
+	public Calculator()
+	{
+		setTitle("Тооны машин");
+		setSize(350, 180);
+		setLayout(new FlowLayout());
 
-        btnAdd.addActionListener(e -> resultLabel.setText("Хариу: " + add()));
-        btnSub.addActionListener(e -> resultLabel.setText("Хариу: " + subtract()));
-        btnMul.addActionListener(e -> resultLabel.setText("Хариу: " + multiply()));
-        btnDiv.addActionListener(e -> resultLabel.setText("Хариу: " + divide()));
+		JButton btnnemeh = new JButton("+");
+		JButton btnhasah = new JButton("-");
+		JButton btnvrjih = new JButton("*");
+		JButton btnhuwaah = new JButton("/");
 
-        add(new JLabel("1-р гишүүн:"));
-        add(input1);
-        add(new JLabel("2-р гишүүн:"));
-        add(input2);
-        add(btnAdd);
-        add(btnSub);
-        add(btnMul);
-        add(btnDiv);
-        add(resultLabel);
+		btnnemeh.addActionListener(e -> {
+			double hariu = nemeh();
+			resultLabel.setText("Хариу: " + hariu);
+		});
 
-        setVisible(true);
-    }
+		btnhasah.addActionListener(e -> {
+			double hariu = hasah();
+			resultLabel.setText("Хариу: " + hariu);
+		});
 
-    private double add()      { return Double.parseDouble(input1.getText()) + Double.parseDouble(input2.getText()); }
-    private double subtract() { return Double.parseDouble(input1.getText()) - Double.parseDouble(input2.getText()); }
-    private double multiply() { return Double.parseDouble(input1.getText()) * Double.parseDouble(input2.getText()); }
-    private double divide()   { return Double.parseDouble(input1.getText()) / Double.parseDouble(input2.getText()); }
+		btnvrjih.addActionListener(e -> {
+			double hariu = vrjih();
+			resultLabel.setText("Хариу: " + hariu);
+		});
+
+		btnhuwaah.addActionListener(e -> {
+			double hariu = huwaah();
+			resultLabel.setText("Хариу: " + hariu);
+		});
+
+		add(new JLabel("1-р гишүүн:"));
+		add(input1);
+		add(new JLabel("2-р гишүүн:"));
+		add(input2);
+		add(btnnemeh);
+		add(btnhasah);
+		add(btnvrjih);
+		add(btnhuwaah);
+		add(resultLabel);
+
+		setVisible(true);
+	}
+
+	private double nemeh()
+	{
+		double num1 = Double.parseDouble(input1.getText());
+		double num2 = Double.parseDouble(input2.getText());
+		double result = num1 + num2;
+		return result;
+	}
+
+	private double hasah()
+	{
+		double num1 = Double.parseDouble(input1.getText());
+		double num2 = Double.parseDouble(input2.getText());
+		double result = num1 - num2;
+		return result;
+	}
+
+	private double vrjih()
+	{
+		double num1 = Double.parseDouble(input1.getText());
+		double num2 = Double.parseDouble( input2.getText() );
+		double result = num1 * num2;
+		return result;
+	}
+
+	private double huwaah()
+	{
+		double num1 = Double.parseDouble(input1.getText());
+		double num2 = Double.parseDouble(input2.getText());
+		double result = num1 / num2;   
+		return result;
+	}
 }
